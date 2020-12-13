@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script src="modal.js" type="module"></script>
+  </head>
+  <body class="p-8">
+    <div data-controller="modal">
+      <div class="space-y-2" data-modal-target="inert">
+        <h1 class="text-2xl font-bold">Modal</h1>
+        <p class="fixed flex inset-x-0 bottom-0 justify-between text-white bg-gray-800">
+          <span>AAA</span>
+          <span>ZZZ</span>
+        </p>
+        <p>
+          <button
+            class="p-1 border border-gray-400 bg-gray-200"
+            aria-haspopup="dialog"
+            data-action="modal#handleOpen"
+            data-modal-target-param="modal-1"
+          >
+            Open modal 1
+          </button>
+        </p>
+        <p>
+          <button
+            class="p-1 border border-gray-400 bg-gray-200"
+            aria-haspopup="dialog"
+            data-action="modal#handleOpen"
+            data-modal-target-param="modal-2"
+          >
+            Open modal 2
+          </button>
+        </p>
+        <div class="space-y-96">
+          <p>hoge</p>
+          <p>hoge</p>
+          <p>hoge</p>
+          <p>hoge</p>
+          <p>hoge</p>
+          <p>hoge</p>
+          <p>hoge</p>
+          <p>hoge</p>
+        </div>
+      </div>
+
+      <div
+        class="hidden fixed inset-0 bg-black bg-opacity-25"
+        data-modal-target="backdrop"
+      ></div>
+
+      <div
+        id="modal-1"
+        class="hidden fixed inset-0 overflow-y-scroll px-6 py-12"
+        role="dialog"
+        aria-labelledby="modal-1-heading"
+        aria-modal="true"
+        data-action="keydown->modal#handleEscape"
+      >
+        <div class="absolute inset-0" data-action="click->modal#handleClose"></div>
+
+        <div class="relative max-w-3xl mx-auto p-4 bg-white rounded-lg">
+          <div class="space-y-2">
+            <p>
+              <button
+                class="p-1 border border-gray-400 bg-gray-200"
+                data-action="modal#handleClose"
+              >
+                Close
+              </button>
+            </p>
+            <h1 class="text-xl font-bold" id="modal-1-heading">Modal 1</h1>
+            <p>hogehoge</p>
+            <p>
+              <button
+                class="p-1 border border-gray-400 bg-gray-200"
+                aria-haspopup="dialog"
+                data-action="modal#handleOpen"
+                data-modal-target-param="modal-2"
+              >
+                Open modal 2
+              </button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="modal-2"
+        class="hidden fixed inset-0 overflow-y-scroll px-6 py-12"
+        role="dialog"
+        aria-labelledby="modal-1-heading"
+        aria-modal="true"
+        data-action="keydown->modal#handleEscape"
+      >
+        <div class="absolute inset-0" data-action="click->modal#handleClose"></div>
+
+        <div class="relative max-w-3xl mx-auto p-4 bg-white rounded-lg">
+          <div class="space-y-2">
+            <p>
+              <button
+                class="p-1 border border-gray-400 bg-gray-200"
+                data-action="modal#handleClose"
+              >
+                Close
+              </button>
+            </p>
+            <h1 class="text-xl font-bold" id="modal-2-heading">Modal 2</h1>
+            <div class="space-y-96">
+              <p>hoge</p>
+              <p>hoge</p>
+              <p>hoge</p>
+              <p>hoge</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
