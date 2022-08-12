@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex Textarea</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
+        }
+      }
+    </script>
+    <script type="module">
+      import { Application } from "@hotwired/stimulus";
+      import { FlexTextareaController } from "/flex-textarea/flex-textarea.js";
+      const app = Application.start();
+      app.register("flex-textarea", FlexTextareaController);
+    </script>
+  </head>
+  <body class="p-8">
+    <h1 class="mb-2 text-3xl font-bold">Flex Textarea</h1>
+    <label for="textarea"></label>
+    <textarea
+      id="textarea"
+      class="block h-24 max-h-[500px] w-96 resize-none rounded rounded-lg border border-4 p-2"
+      data-controller="flex-textarea"
+    ></textarea>
+  </body>
+</html>
