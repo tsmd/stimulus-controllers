@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check All</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
+        }
+      }
+    </script>
+    <script type="module">
+      import { Application } from "@hotwired/stimulus";
+      import { CheckAllController } from "/check-all/check-all.js";
+      const app = Application.start();
+      app.register("check-all", CheckAllController);
+    </script>
+  </head>
+  <body class="p-8">
+    <div class="space-y-4" data-controller="check-all">
+      <p>
+        <label>
+          <input
+            type="checkbox"
+            data-check-all-target="checkAll"
+            data-action="check-all#checkAll"
+          />
+          Check all
+        </label>
+      </p>
+      <div class="space-y-2 rounded border p-2">
+        <p>
+          <label>
+            <input
+              type="checkbox"
+              data-check-all-target="checkbox"
+              data-action="check-all#check"
+            />
+            Checkbox 1
+          </label>
+        </p>
+        <p>
+          <label>
+            <input
+              type="checkbox"
+              data-check-all-target="checkbox"
+              data-action="check-all#check"
+            />
+            Checkbox 2
+          </label>
+        </p>
+      </div>
+      <p>
+        <label>
+          <input
+            type="checkbox"
+            data-check-all-target="checkAll"
+            data-action="check-all#checkAll"
+          />
+          Check all
+        </label>
+      </p>
+    </div>
+  </body>
+</html>
