@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Copy Text</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
+        }
+      }
+    </script>
+    <script type="module">
+      import { Application, Controller } from "@hotwired/stimulus";
+      import { ClipboardCopyController } from "/clipboard-copy/clipboard-copy.js";
+      const app = Application.start();
+      app.register("clipboard-copy", ClipboardCopyController);
+      app.register(
+        "test",
+        class extends Controller {
+          report(e) {
+            alert(`Copied: ${e.detail}`);
+          }
+        }
+      );
+    </script>
+  </head>
+  <body
+    class="p-8"
+    data-controller="test"
+    data-action="clipboard-copy->test#report"
+  >
+    <div class="space-y-16">
+      <h1 class="text-3xl font-bold">Clipboard Copy</h1>
+      <div>
+        <h2 class="mb-4 text-xl font-bold">Text field</h2>
+        <div class="flex items-baseline gap-x-2">
+          <label for="input-url">URL</label>
+          <input
+            type="url"
+            value="https://www.example.com/"
+            id="input-url"
+            class="rounded border border-black p-2"
+          />
+          <button
+            type="button"
+            class="rounded border border-black px-4 py-2"
+            data-controller="clipboard-copy"
+            data-clipboard-copy-selector-param="#input-url"
+            data-action="clipboard-copy#copy"
+          >
+            Copy
+          </button>
+        </div>
+      </div>
+      <div>
+        <h2 class="mb-4 text-xl font-bold">Link</h2>
+        <p class="flex items-baseline gap-x-2">
+          <a
+            href="https://www.google.co.jp/"
+            id="anchor"
+            class="text-blue-700 underline"
+          >
+            Google
+          </a>
+          <button
+            type="button"
+            class="rounded border border-black px-4 py-2"
+            data-controller="clipboard-copy"
+            data-clipboard-copy-selector-param="#anchor"
+            data-action="clipboard-copy#copy"
+          >
+            Copy URL
+          </button>
+        </p>
+      </div>
+      <div>
+        <h2 class="mb-4 text-xl font-bold">Text content</h2>
+        <div>
+          <p id="paragraph" class="max-w-80 rounded border p-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <p class="mt-2">
+            <button
+              type="button"
+              class="rounded border border-black px-4 py-2"
+              data-controller="clipboard-copy"
+              data-clipboard-copy-selector-param="#paragraph"
+              data-action="clipboard-copy#copy"
+            >
+              Copy text
+            </button>
+          </p>
+        </div>
+      </div>
+      <div>
+        <h2 class="mb-4 text-xl font-bold">Arbitrary text</h2>
+        <p>
+          <button
+            type="button"
+            class="rounded border border-black px-4 py-2"
+            data-controller="clipboard-copy"
+            data-clipboard-copy-text-param="Yahoo!"
+            data-action="clipboard-copy#copy"
+          >
+            Copy text
+          </button>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
