@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clickable Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
+        }
+      }
+    </script>
+    <script type="module">
+      import { Application } from "@hotwired/stimulus";
+      import { ClickableCardController } from "/clickable-card/clickable-card.js";
+      const app = Application.start();
+      app.register("clickable-card", ClickableCardController);
+    </script>
+  </head>
+  <body class="p-8">
+    <h1 class="mb-2 text-3xl font-bold">Clickable Card</h1>
+    <div class="grid grid-cols-3 gap-6">
+      <article
+        class="group overflow-hidden rounded-lg border hover:ring ring-offset-2"
+        data-controller="clickable-card"
+      >
+        <img
+          src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23cccccc'%3E%3C/rect%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='monospace' font-size='26px' fill='%23333333'%3E400x300%3C/text%3E%3C/svg%3E"
+          alt=""
+          width="400"
+          height="300"
+          class="h-auto w-full"
+        />
+        <div class="space-y-2 py-2">
+          <h2 class="px-4 text-lg font-bold">
+            <a
+              href="https://www.example.com/"
+              class="underline"
+              data-clickable-card-target="link"
+            >
+              Link text
+            </a>
+          </h2>
+          <p class="px-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </div>
+      </article>
+    </div>
+  </body>
+</html>
