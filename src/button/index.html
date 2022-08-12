@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Button</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
+        }
+      }
+    </script>
+    <script type="module">
+      import { Application, Controller } from "@hotwired/stimulus";
+      import { ButtonController } from "/button/button.js";
+      const app = Application.start();
+      app.register("button", ButtonController);
+      app.register(
+        "button-test",
+        class extends Controller {
+          static targets = ["output"];
+          out(e) {
+            const shift = e.shiftKey ? " (shift)" : "";
+            this.outputTarget.textContent = `clicked${shift}`;
+          }
+        }
+      );
+    </script>
+  </head>
+  <body class="p-8" data-controller="button-test">
+    <h1>ButtonController</h1>
+    <span
+      class="inline-block rounded border"
+      data-controller="button"
+      data-action="keydown->button#handleKeydown keyup->button#handleKeyup click->button-test#out"
+      >Click me</span
+    >
+    <output data-button-test-target="output"></output>
+  </body>
+</html>
