@@ -1,0 +1,31 @@
+{
+  "name": "stimulus-controllers",
+  "version": "0.1.0",
+  "description": "Personal collection of accessible and robust Stimulus controllers",
+  "main": "src/index.js",
+  "scripts": {
+    "cypress": "cypress open",
+    "cypress:run": "cypress run",
+    "serve": "serve src",
+    "test": "npm run test:ci",
+    "test:ci": "start-server-and-test serve http://localhost:3000/ cypress:run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsmd/stimulus-controllers.git"
+  },
+  "keywords": [],
+  "author": "SHIMADA Takayuki",
+  "license": "MIT",
+  "peerDependencies": {
+    "@hotwired/stimulus": "^3.1.0"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^8.0.3",
+    "cypress": "^10.4.0",
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "serve": "^14.0.1",
+    "start-server-and-test": "^1.14.0"
+  }
+}

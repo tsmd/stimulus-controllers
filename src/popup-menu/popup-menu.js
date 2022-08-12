@@ -1,9 +1,6 @@
-import {
-  Application,
-  Controller,
-} from "https://cdn.skypack.dev/pin/stimulus@v2.0.0-EVt9D8pnFxBm3QrYD84I/stimulus.js";
+import { Controller } from "@hotwired/stimulus";
 
-class PopupMenuController extends Controller {
+export class PopupMenuController extends Controller {
   static get targets() {
     return ["item"];
   }
@@ -113,5 +110,3 @@ function nextFrame() {
   return new Promise(requestAnimationFrame);
 }
 
-const app = Application.start();
-app.register("popup-menu", PopupMenuController);

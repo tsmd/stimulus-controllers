@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popup Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
+        }
+      }
+    </script>
+    <script type="module">
+      import { Application } from "@hotwired/stimulus";
+      import { PopupMenuController } from "/popup-menu/popup-menu.js";
+      const app = Application.start();
+      app.register("popup-menu", PopupMenuController);
+    </script>
+  </head>
+  <body class="p-8">
+    <details
+      aria-haspopup="menu"
+      data-controller="popup-menu"
+      data-action="focusout->popup-menu#closeOnFocusOut click@window->popup-menu#closeOnClickOutside keydown->popup-menu#updateSelectionWithKeyboard"
+    >
+      <summary>Menu</summary>
+      <div class="border border-gray-300" role="menu">
+        <a
+          class="block focus:outline-none focus:ring-4"
+          href
+          role="menuitem"
+          data-popup-menu-target="item"
+        >
+          Item 1
+        </a>
+        <a
+          class="block focus:outline-none focus:ring-4"
+          href
+          role="menuitem"
+          data-popup-menu-target="item"
+        >
+          Item 2
+        </a>
+        <a
+          class="block focus:outline-none focus:ring-4"
+          href
+          role="menuitem"
+          data-popup-menu-target="item"
+        >
+          Item 3
+        </a>
+      </div>
+    </details>
+  </body>
+</html>

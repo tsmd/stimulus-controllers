@@ -1,15 +1,11 @@
-import {
-  Application,
-  Controller,
-} from "https://cdn.skypack.dev/pin/stimulus@v2.0.0-EVt9D8pnFxBm3QrYD84I/stimulus.js";
-import "https://cdn.skypack.dev/pin/wicg-inert@v3.1.0-Cv3SQzOgP8F9dbLk9G5d/wicg-inert.js";
-import { tabbable } from "https://cdn.skypack.dev/pin/tabbable@v5.1.4-5y4VMuDaY6LsaeMzgy4b/tabbable.js";
+import { Controller } from "@hotwired/stimulus";
+import { tabbable } from "tabbable";
 import {
   disableBodyScroll,
   enableBodyScroll,
-} from "https://cdn.skypack.dev/pin/body-scroll-lock@v3.1.5-0fHbTGvaZnlqhaEKqm8R/body-scroll-lock.js";
+} from "body-scroll-lock";
 
-class ModalController extends Controller {
+export class ModalController extends Controller {
   static get targets() {
     return ["inert", "backdrop"];
   }
@@ -98,6 +94,3 @@ class ModalController extends Controller {
     }
   }
 }
-
-const app = Application.start();
-app.register("modal", ModalController);
