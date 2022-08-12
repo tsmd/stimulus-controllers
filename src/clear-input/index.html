@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clear Input</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
+        }
+      }
+    </script>
+    <script type="module">
+      import { Application } from "@hotwired/stimulus";
+      import { ClearInputController } from "/clear-input/clear-input.js";
+      const app = Application.start();
+      app.register("clear-input", ClearInputController);
+    </script>
+  </head>
+  <body class="p-8">
+    <div class="space-y-8">
+      <div>
+        <label for="input-1">Input</label>
+        <div class="relative inline-block" data-controller="clear-input">
+          <input
+            type="text"
+            id="input-1"
+            class="block w-full rounded border border-black p-2"
+            data-clear-input-target="input"
+          />
+          <button
+            type="button"
+            class="absolute top-0 right-0 h-full w-8 hover:bg-gray-100"
+            hidden
+            aria-label="clear"
+            data-clear-input-target="clear"
+          >
+            ✖
+          </button>
+        </div>
+      </div>
+      <div>
+        <label for="input-2">Input (with default value)</label>
+        <div class="relative inline-block" data-controller="clear-input">
+          <input
+            type="text"
+            value="hogehoge"
+            id="input-2"
+            class="block w-full rounded border border-black p-2"
+            data-clear-input-target="input"
+          />
+          <button
+            type="button"
+            class="absolute top-0 right-0 h-full w-8 hover:bg-gray-100"
+            hidden
+            aria-label="clear"
+            data-clear-input-target="clear"
+          >
+            ✖
+          </button>
+        </div>
+      </div>
+      <div>
+        <label for="input-3">Input (readonly)</label>
+        <div class="relative inline-block" data-controller="clear-input">
+          <input
+            type="text"
+            value="hogehoge"
+            readonly
+            id="input-3"
+            class="block w-full rounded border border-black p-2"
+            data-clear-input-target="input"
+          />
+          <button
+            type="button"
+            class="absolute top-0 right-0 h-full w-8 hover:bg-gray-100"
+            hidden
+            aria-label="clear"
+            data-clear-input-target="clear"
+          >
+            ✖
+          </button>
+        </div>
+      </div>
+      <div>
+        <label for="input-4">Input (disabled)</label>
+        <div class="relative inline-block" data-controller="clear-input">
+          <input
+            type="text"
+            value="hogehoge"
+            disabled
+            id="input-4"
+            class="block w-full rounded border border-black p-2"
+            data-clear-input-target="input"
+          />
+          <button
+            type="button"
+            class="absolute top-0 right-0 h-full w-8 hover:bg-gray-100"
+            hidden
+            aria-label="clear"
+            data-clear-input-target="clear"
+          >
+            ✖
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
