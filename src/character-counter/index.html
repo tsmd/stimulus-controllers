@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character Counter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
+        }
+      }
+    </script>
+    <script type="module">
+      import { Application } from "@hotwired/stimulus";
+      import { CharacterCounterController } from "./character-counter.js";
+      const app = Application.start();
+      app.register("character-counter", CharacterCounterController);
+    </script>
+  </head>
+  <body class="p-8">
+    <div class="space-y-8">
+      <div data-controller="character-counter">
+        <label for="textarea-1" class="mb-1 block">Textarea</label>
+        <textarea
+          id="textarea-1"
+          class="block h-32 w-80 rounded border border-black"
+          data-character-counter-target="text"
+          data-action="character-counter#update"
+        ></textarea>
+        <p class="mt-1" data-character-counter-target="output">0</p>
+      </div>
+      <div data-controller="character-counter">
+        <label for="textarea-2" class="mb-1 block">
+          Textarea (with initial value)
+        </label>
+        <textarea
+          id="textarea-2"
+          class="block h-32 w-80 rounded border border-black"
+          data-character-counter-target="text"
+          data-action="character-counter#update"
+        >
+Hello World 🌎</textarea
+        >
+        <p class="mt-1" data-character-counter-target="output">0</p>
+      </div>
+    </div>
+  </body>
+</html>

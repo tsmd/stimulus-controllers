@@ -1,3 +1,4 @@
+export * from "./character-counter/character-counter.js";
 export * from "./check-all/check-all.js";
 export * from "./clear-input/clear-input.js";
 export * from "./clickable-card/clickable-card.js";
