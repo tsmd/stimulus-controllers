@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { listen } from "../helpers.js";
 
 /**
  * @property {HTMLInputElement} inputTarget
@@ -9,43 +10,41 @@ export class ClearInputController extends Controller {
 
   connect() {
     this.clearTarget.tabIndex = -1;
-    this.clearTarget.hidden = true;
+    this.clearTarget.style.display = "none";
 
-    this.clearTarget.addEventListener("click", this.clear_);
-    this.element.addEventListener("focusout", this.hideButton_);
-    this.inputTarget.addEventListener("focus", this.update_);
-    this.inputTarget.addEventListener("input", this.update_);
-    this.inputTarget.addEventListener("mouseout", this.hideButton_);
-    this.inputTarget.addEventListener("mouseover", this.update_);
+    this.subscriptions = [
+      listen(this.clearTarget, "click", this.clear_.bind(this)),
+      listen(this.element, "focusout", this.hideButton_.bind(this)),
+      listen(this.inputTarget, "focus", this.update_.bind(this)),
+      listen(this.inputTarget, "input", this.update_.bind(this)),
+      listen(this.inputTarget, "mouseout", this.hideButton_.bind(this)),
+      listen(this.inputTarget, "mouseover", this.update_.bind(this)),
+    ];
   }
 
   disconnect() {
-    this.clearTarget.removeEventListener("click", this.clear_);
-    this.element.removeEventListener("focusout", this.hideButton_);
-    this.inputTarget.removeEventListener("focus", this.update_);
-    this.inputTarget.removeEventListener("input", this.update_);
-    this.inputTarget.removeEventListener("mouseout", this.hideButton_);
-    this.inputTarget.removeEventListener("mouseover", this.update_);
+    this.subscriptions.forEach(({ remove }) => remove());
   }
 
-  clear_ = () => {
+  clear_() {
     this.inputTarget.value = "";
     this.update_();
     this.inputTarget.focus();
-  };
+  }
 
-  update_ = () => {
-    this.clearTarget.hidden = !(
+  update_() {
+    this.clearTarget.style.display =
       Boolean(this.inputTarget.value) &&
       !this.inputTarget.readOnly &&
       this.inputTarget.getAttribute("aria-disabled") !== "true" &&
       this.inputTarget.getAttribute("aria-readonly") !== "true"
-    );
-  };
+        ? ""
+        : "none";
+  }
 
-  hideButton_ = (e) => {
+  hideButton_(e) {
     if (!this.element.contains(e.relatedTarget)) {
-      this.clearTarget.hidden = true;
+      this.clearTarget.style.display = "none";
     }
-  };
+  }
 }

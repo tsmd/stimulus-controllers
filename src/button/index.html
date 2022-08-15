@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Button</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script type="importmap">
       {
         "imports": {
@@ -12,6 +11,7 @@
         }
       }
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
       import { Application, Controller } from "@hotwired/stimulus";
       import { ButtonController } from "/button/button.js";
@@ -30,13 +30,28 @@
     </script>
   </head>
   <body class="p-8" data-controller="button-test">
-    <h1>ButtonController</h1>
-    <span
-      class="inline-block rounded border"
-      data-controller="button"
-      data-action="keydown->button#handleKeydown keyup->button#handleKeyup click->button-test#out"
-      >Click me</span
-    >
-    <output data-button-test-target="output"></output>
+    <header class="mb-16 border-b border-black">
+      <p><a href="/" class="underline">← Back</a></p>
+      <div class="my-16">
+        <h1 class="text-3xl font-bold">Button</h1>
+        <div class="mt-3 max-w-xl">
+          <p>Emulates native <code>&lt;button></code> element.</p>
+          <p>
+            It is <strong>strongly recommended</strong> to use the native
+            <code>&lt;button></code> element.
+          </p>
+        </div>
+      </div>
+    </header>
+    <main>
+      <span
+        class="inline-block rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+        data-controller="button"
+        data-action="click->button-test#out"
+      >
+        Click me
+      </span>
+      <output data-button-test-target="output"></output>
+    </main>
   </body>
 </html>

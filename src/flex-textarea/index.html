@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flex Textarea</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script type="importmap">
       {
         "imports": {
@@ -12,6 +11,7 @@
         }
       }
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
       import { Application } from "@hotwired/stimulus";
       import { FlexTextareaController } from "/flex-textarea/flex-textarea.js";
@@ -20,12 +20,22 @@
     </script>
   </head>
   <body class="p-8">
-    <h1 class="mb-2 text-3xl font-bold">Flex Textarea</h1>
-    <label for="textarea"></label>
-    <textarea
-      id="textarea"
-      class="block h-24 max-h-[500px] w-96 resize-none rounded rounded-lg border border-4 p-2"
-      data-controller="flex-textarea"
-    ></textarea>
+    <header class="mb-16 border-b border-black">
+      <p><a href="/" class="underline">← Back</a></p>
+      <div class="my-16">
+        <h1 class="text-3xl font-bold">Flex Textarea</h1>
+        <div class="mt-3 max-w-xl">
+          <p>Textarea that adjusts height for text volume.</p>
+        </div>
+      </div>
+    </header>
+    <main>
+      <label for="textarea">Textarea</label>
+      <textarea
+        id="textarea"
+        class="mt-2 block h-24 max-h-[500px] w-96 max-w-full resize-none rounded border border-gray-300 p-2"
+        data-controller="flex-textarea"
+      ></textarea>
+    </main>
   </body>
 </html>

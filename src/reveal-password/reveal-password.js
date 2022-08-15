@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { listen } from "../helpers.js";
 
 /**
  * @property {boolean} alwaysValue
@@ -26,17 +27,22 @@ export class RevealPasswordController extends Controller {
   }
 
   connect() {
-    this.passwordTarget.addEventListener("input", this.update_);
-    this.passwordTarget.form?.addEventListener("submit", this.revert_);
-    this.revealTarget.addEventListener("click", this.toggle);
+    this.subscriptions = [
+      listen(this.passwordTarget, "input", this.update_.bind(this)),
+      listen(this.revealTarget, "click", this.toggle.bind(this)),
+    ];
+
+    if (this.passwordTarget.form) {
+      this.subscriptions.push(
+        listen(this.passwordTarget.form, "submit", this.revert_.bind(this))
+      );
+    }
 
     this.update_();
   }
 
   disconnect() {
-    this.passwordTarget.removeEventListener("input", this.update_);
-    this.passwordTarget.form?.removeEventListener("submit", this.revert_);
-    this.revealTarget.removeEventListener("click", this.toggle);
+    this.subscriptions.forEach(({ remove }) => remove());
   }
 
   toggle = () => {
@@ -44,8 +50,8 @@ export class RevealPasswordController extends Controller {
   };
 
   update_ = () => {
-    this.revealTarget.hidden =
-      !this.alwaysValue && !Boolean(this.passwordTarget.value);
+    this.revealTarget.style.display =
+      this.alwaysValue || Boolean(this.passwordTarget.value) ? "" : "none";
   };
 
   revert_ = () => {

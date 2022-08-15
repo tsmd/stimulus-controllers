@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
+import { listen } from "../helpers.js";
 
 /**
  * @property {HTMLAnchorElement} linkTarget
@@ -14,23 +15,25 @@ export class ClickableCardController extends Controller {
 
   connect() {
     this.element.style.cursor = "pointer";
-    this.element.addEventListener("mousedown", this.mouseDown_);
-    this.element.addEventListener("mouseup", this.mouseUp_);
+
+    this.subscriptions = [
+      listen(this.element, "mousedown", this.mouseDown_.bind(this)),
+      listen(this.element, "mouseup", this.mouseUp_.bind(this)),
+    ];
   }
 
   disconnect() {
-    this.element.removeEventListener("mousedown", this.mouseDown_);
-    this.element.removeEventListener("mouseup", this.mouseUp_);
+    this.subscriptions.forEach(({ remove }) => remove());
   }
 
   /** @type {MouseEvent} e */
-  mouseDown_ = (e) => {
+  mouseDown_(e) {
     this.screenX_ = e.screenX;
     this.screenY_ = e.screenY;
-  };
+  }
 
   /** @type {MouseEvent} e */
-  mouseUp_ = (e) => {
+  mouseUp_(e) {
     if (this.linkTarget.contains(e.target)) {
       return;
     }
@@ -53,5 +56,5 @@ export class ClickableCardController extends Controller {
 
     this.screenX_ = -1;
     this.screenY_ = -1;
-  };
+  }
 }

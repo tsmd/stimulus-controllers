@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Copy Text</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script type="importmap">
       {
         "imports": {
@@ -12,6 +11,7 @@
         }
       }
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
       import { Application, Controller } from "@hotwired/stimulus";
       import { ClipboardCopyController } from "/clipboard-copy/clipboard-copy.js";
@@ -32,63 +32,87 @@
     data-controller="test"
     data-action="clipboard-copy->test#report"
   >
-    <div class="space-y-16">
-      <h1 class="text-3xl font-bold">Clipboard Copy</h1>
-      <div>
-        <h2 class="mb-4 text-xl font-bold">Text field</h2>
-        <div class="flex items-baseline gap-x-2">
-          <label for="input-url">URL</label>
-          <input
-            type="url"
-            value="https://www.example.com/"
-            id="input-url"
-            class="rounded border border-black p-2"
-          />
-          <button
-            type="button"
-            class="rounded border border-black px-4 py-2"
-            data-controller="clipboard-copy"
-            data-clipboard-copy-selector-param="#input-url"
-            data-action="clipboard-copy#copy"
-          >
-            Copy
-          </button>
+    <header class="mb-16 border-b border-black">
+      <p><a href="/" class="underline">← Back</a></p>
+      <div class="my-16">
+        <h1 class="text-3xl font-bold">Clipboard Copy</h1>
+        <div class="mt-3 max-w-xl">
+          <p>Click to copy arbitrary text.</p>
         </div>
       </div>
-      <div>
-        <h2 class="mb-4 text-xl font-bold">Link</h2>
-        <p class="flex items-baseline gap-x-2">
-          <a
-            href="https://www.google.co.jp/"
-            id="anchor"
-            class="text-blue-700 underline"
-          >
-            Google
-          </a>
-          <button
-            type="button"
-            class="rounded border border-black px-4 py-2"
-            data-controller="clipboard-copy"
-            data-clipboard-copy-selector-param="#anchor"
-            data-action="clipboard-copy#copy"
-          >
-            Copy URL
-          </button>
-        </p>
-      </div>
-      <div>
-        <h2 class="mb-4 text-xl font-bold">Text content</h2>
+    </header>
+    <main>
+      <div class="space-y-16">
         <div>
-          <p id="paragraph" class="max-w-80 rounded border p-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <p class="mt-2">
+          <h2 class="mb-4 text-xl font-bold">Text field</h2>
+          <div class="flex items-baseline gap-x-2">
+            <label for="input-url">URL</label>
+            <input
+              type="url"
+              value="https://www.example.com/"
+              id="input-url"
+              class="rounded border border-black p-2"
+            />
             <button
               type="button"
-              class="rounded border border-black px-4 py-2"
+              class="inline-block rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
               data-controller="clipboard-copy"
-              data-clipboard-copy-selector-param="#paragraph"
+              data-clipboard-copy-selector-param="#input-url"
+              data-action="clipboard-copy#copy"
+            >
+              Copy URL
+            </button>
+          </div>
+        </div>
+        <div>
+          <h2 class="mb-4 text-xl font-bold">Link</h2>
+          <p class="flex items-baseline gap-x-2">
+            <a
+              href="https://www.google.co.jp/"
+              id="anchor"
+              class="text-blue-700 underline"
+            >
+              Google
+            </a>
+            <button
+              type="button"
+              class="inline-block rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+              data-controller="clipboard-copy"
+              data-clipboard-copy-selector-param="#anchor"
+              data-action="clipboard-copy#copy"
+            >
+              Copy link
+            </button>
+          </p>
+        </div>
+        <div>
+          <h2 class="mb-4 text-xl font-bold">Text content</h2>
+          <div>
+            <p id="paragraph" class="max-w-80 rounded border border-gray-300 p-4">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <p class="mt-2">
+              <button
+                type="button"
+                class="inline-block rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+                data-controller="clipboard-copy"
+                data-clipboard-copy-selector-param="#paragraph"
+                data-action="clipboard-copy#copy"
+              >
+                Copy text content
+              </button>
+            </p>
+          </div>
+        </div>
+        <div>
+          <h2 class="mb-4 text-xl font-bold">Arbitrary text</h2>
+          <p>
+            <button
+              type="button"
+              class="inline-block rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+              data-controller="clipboard-copy"
+              data-clipboard-copy-text-param="Yahoo!"
               data-action="clipboard-copy#copy"
             >
               Copy text
@@ -96,20 +120,6 @@
           </p>
         </div>
       </div>
-      <div>
-        <h2 class="mb-4 text-xl font-bold">Arbitrary text</h2>
-        <p>
-          <button
-            type="button"
-            class="rounded border border-black px-4 py-2"
-            data-controller="clipboard-copy"
-            data-clipboard-copy-text-param="Yahoo!"
-            data-action="clipboard-copy#copy"
-          >
-            Copy text
-          </button>
-        </p>
-      </div>
-    </div>
+    </main>
   </body>
 </html>

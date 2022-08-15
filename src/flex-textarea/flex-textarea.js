@@ -1,17 +1,21 @@
 import { Controller } from "@hotwired/stimulus";
+import { listen } from "../helpers.js";
 
 export class FlexTextareaController extends Controller {
   connect() {
     this.element.style.boxSizing = "border-box";
-    this.element.addEventListener("input", this.resize_);
     this.resize_();
+
+    this.subscriptions = [
+      listen(this.element, "input", this.resize_.bind(this)),
+    ];
   }
 
   disconnect() {
-    this.element.removeEventListener("input", this.resize_);
+    this.subscriptions.forEach(({ remove }) => remove());
   }
 
-  resize_ = () => {
+  resize_() {
     this.element.style.height = "";
 
     const style = window.getComputedStyle(this.element);
@@ -20,5 +24,5 @@ export class FlexTextareaController extends Controller {
       parseInt(style.borderTopWidth) +
       parseInt(style.borderBottomWidth);
     this.element.style.height = `${height}px`;
-  };
+  }
 }

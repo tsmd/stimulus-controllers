@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clear Input</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <script type="importmap">
       {
         "imports": {
@@ -12,6 +11,7 @@
         }
       }
     </script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
       import { Application } from "@hotwired/stimulus";
       import { ClearInputController } from "/clear-input/clear-input.js";
@@ -20,92 +20,167 @@
     </script>
   </head>
   <body class="p-8">
-    <div class="space-y-8">
-      <div>
-        <label for="input-1">Input</label>
-        <div class="relative inline-block" data-controller="clear-input">
-          <input
-            type="text"
-            id="input-1"
-            class="block w-full rounded border border-black p-2"
-            data-clear-input-target="input"
-          />
-          <button
-            type="button"
-            class="absolute top-0 right-0 h-full w-8 hover:bg-gray-100"
-            hidden
-            aria-label="clear"
-            data-clear-input-target="clear"
-          >
-            ✖
-          </button>
+    <header class="mb-16 border-b border-black">
+      <p><a href="/" class="underline">← Back</a></p>
+      <div class="my-16">
+        <h1 class="text-3xl font-bold">Clear Input</h1>
+        <div class="mt-3 max-w-xl">
+          <p>Clear button besides the text field.</p>
         </div>
       </div>
-      <div>
-        <label for="input-2">Input (with default value)</label>
-        <div class="relative inline-block" data-controller="clear-input">
-          <input
-            type="text"
-            value="hogehoge"
-            id="input-2"
-            class="block w-full rounded border border-black p-2"
-            data-clear-input-target="input"
-          />
-          <button
-            type="button"
-            class="absolute top-0 right-0 h-full w-8 hover:bg-gray-100"
-            hidden
-            aria-label="clear"
-            data-clear-input-target="clear"
+    </header>
+    <main>
+      <div class="space-y-8">
+        <div class="flex flex-col items-start gap-y-2">
+          <label for="input-1">Input</label>
+          <div
+            class="relative inline-block w-96 max-w-full"
+            data-controller="clear-input"
           >
-            ✖
-          </button>
+            <input
+              type="text"
+              id="input-1"
+              class="block w-full rounded border border-gray-300 p-2"
+              data-clear-input-target="input"
+            />
+            <button
+              type="button"
+              class="absolute top-0 right-0 flex h-full w-12 items-center justify-center border-l border-gray-300"
+              style="display: none"
+              aria-label="clear"
+              data-clear-input-target="clear"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-col items-start gap-y-2">
+          <label for="input-2">Input (with default value)</label>
+          <div
+            class="relative inline-block w-96 max-w-full"
+            data-controller="clear-input"
+          >
+            <input
+              type="text"
+              value="hogehoge"
+              id="input-2"
+              class="block w-full rounded border border-gray-300 p-2"
+              data-clear-input-target="input"
+            />
+            <button
+              type="button"
+              class="absolute top-0 right-0 flex h-full w-12 items-center justify-center border-l border-gray-300"
+              style="display: none"
+              aria-label="clear"
+              data-clear-input-target="clear"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-col items-start gap-y-2">
+          <label for="input-3">Input (readonly)</label>
+          <div
+            class="relative inline-block w-96 max-w-full"
+            data-controller="clear-input"
+          >
+            <input
+              type="text"
+              value="hogehoge"
+              readonly
+              id="input-3"
+              class="block w-full rounded border border-gray-300 p-2"
+              data-clear-input-target="input"
+            />
+            <button
+              type="button"
+              class="absolute top-0 right-0 flex h-full w-12 items-center justify-center border-l border-gray-300"
+              style="display: none"
+              aria-label="clear"
+              data-clear-input-target="clear"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-col items-start gap-y-2">
+          <label for="input-4">Input (disabled)</label>
+          <div
+            class="relative inline-block w-96 max-w-full"
+            data-controller="clear-input"
+          >
+            <input
+              type="text"
+              value="hogehoge"
+              disabled
+              id="input-4"
+              class="block w-full rounded border border-gray-300 p-2"
+              data-clear-input-target="input"
+            />
+            <button
+              type="button"
+              class="absolute top-0 right-0 flex h-full w-12 items-center justify-center border-l border-gray-300"
+              style="display: none"
+              aria-label="clear"
+              data-clear-input-target="clear"
+            >
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
-      <div>
-        <label for="input-3">Input (readonly)</label>
-        <div class="relative inline-block" data-controller="clear-input">
-          <input
-            type="text"
-            value="hogehoge"
-            readonly
-            id="input-3"
-            class="block w-full rounded border border-black p-2"
-            data-clear-input-target="input"
-          />
-          <button
-            type="button"
-            class="absolute top-0 right-0 h-full w-8 hover:bg-gray-100"
-            hidden
-            aria-label="clear"
-            data-clear-input-target="clear"
-          >
-            ✖
-          </button>
-        </div>
-      </div>
-      <div>
-        <label for="input-4">Input (disabled)</label>
-        <div class="relative inline-block" data-controller="clear-input">
-          <input
-            type="text"
-            value="hogehoge"
-            disabled
-            id="input-4"
-            class="block w-full rounded border border-black p-2"
-            data-clear-input-target="input"
-          />
-          <button
-            type="button"
-            class="absolute top-0 right-0 h-full w-8 hover:bg-gray-100"
-            hidden
-            aria-label="clear"
-            data-clear-input-target="clear"
-          >
-            ✖
-          </button>
-        </div>
-      </div>
-    </div>
+    </main>
   </body>
 </html>
