@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disclosure</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm",
+          "@thoughtbot/tailwindcss-aria-attributes": "https://cdn.jsdelivr.net/npm/@thoughtbot/tailwindcss-aria-attributes@0/+esm"
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import ariaPlugin from "@thoughtbot/tailwindcss-aria-attributes";
+      tailwind.config = {
+        plugins: [ariaPlugin],
+      };
+    </script>
+    <script type="module">
+      import { Application } from "@hotwired/stimulus";
+      import { DisclosureController } from "/disclosure/disclosure.js";
+      const app = Application.start();
+      app.register("disclosure", DisclosureController);
+    </script>
+  </head>
+  <body class="p-8">
+    <header class="mb-16 border-b border-black">
+      <p><a href="/" class="underline">← Back</a></p>
+      <div class="my-16">
+        <h1 class="text-3xl font-bold">Disclosure</h1>
+        <div class="mt-3 max-w-xl">
+          <p>Expands / Collapses group of content.</p>
+          <p>
+            It’s recommended to use native <code>&lt;details></code> and
+            <code>&lt;summary></code> element.
+          </p>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="space-y-16">
+        <div>
+          <button
+            type="button"
+            class="inline-block rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+            data-controller="disclosure"
+            aria-controls="disclosure-1"
+          >
+            Toggle content
+          </button>
+          <div
+            id="disclosure-1"
+            class="aria-hidden:hidden mt-2 block bg-gray-100 p-4"
+            aria-hidden="true"
+          >
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              lectus elit, posuere at tellus a, convallis commodo sapien. Donec
+              in dolor et felis rutrum commodo. Praesent sagittis ante ac
+              consectetur iaculis. Phasellus pretium massa venenatis turpis
+              gravida feugiat. Proin in massa varius, dictum mauris in, vehicula
+              diam. Nulla facilisi. Fusce congue erat eget est ultrices
+              lobortis. Morbi justo sapien, ornare at tortor a, aliquam lobortis
+              est. Aliquam a tortor urna. Cras pellentesque mauris ac eros
+              porttitor bibendum. Pellentesque faucibus fermentum diam, quis
+              faucibus libero dignissim nec. Duis et ultricies libero. Sed
+              tincidunt condimentum sem, sed dictum leo dignissim vitae. Nulla
+              mollis urna sit amet quam ultricies, sed ornare orci consequat.
+              Vestibulum scelerisque augue non laoreet feugiat. Duis quis mi
+              commodo, ultrices tellus sit amet, euismod mauris.
+            </p>
+          </div>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="inline-block rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+            data-controller="disclosure"
+            aria-controls="disclosure-2 disclosure-3"
+          >
+            Toggle multiple content
+          </button>
+          <div
+            id="disclosure-2"
+            class="aria-hidden:hidden mt-2 block bg-gray-100 p-4"
+            aria-hidden="true"
+          >
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              lectus elit, posuere at tellus a, convallis commodo sapien. Donec
+              in dolor et felis rutrum commodo. Praesent sagittis ante ac
+              consectetur iaculis. Phasellus pretium massa venenatis turpis
+              gravida feugiat. Proin in massa varius, dictum mauris in, vehicula
+              diam. Nulla facilisi. Fusce congue erat eget est ultrices
+              lobortis. Morbi justo sapien, ornare at tortor a, aliquam lobortis
+              est. Aliquam a tortor urna. Cras pellentesque mauris ac eros
+              porttitor bibendum. Pellentesque faucibus fermentum diam, quis
+              faucibus libero dignissim nec. Duis et ultricies libero. Sed
+              tincidunt condimentum sem, sed dictum leo dignissim vitae. Nulla
+              mollis urna sit amet quam ultricies, sed ornare orci consequat.
+              Vestibulum scelerisque augue non laoreet feugiat. Duis quis mi
+              commodo, ultrices tellus sit amet, euismod mauris.
+            </p>
+          </div>
+          <div
+            id="disclosure-3"
+            class="aria-hidden:hidden mt-2 block bg-gray-100 p-4"
+            aria-hidden="true"
+          >
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+              lectus elit, posuere at tellus a, convallis commodo sapien. Donec
+              in dolor et felis rutrum commodo. Praesent sagittis ante ac
+              consectetur iaculis. Phasellus pretium massa venenatis turpis
+              gravida feugiat. Proin in massa varius, dictum mauris in, vehicula
+              diam. Nulla facilisi. Fusce congue erat eget est ultrices
+              lobortis. Morbi justo sapien, ornare at tortor a, aliquam lobortis
+              est. Aliquam a tortor urna. Cras pellentesque mauris ac eros
+              porttitor bibendum. Pellentesque faucibus fermentum diam, quis
+              faucibus libero dignissim nec. Duis et ultricies libero. Sed
+              tincidunt condimentum sem, sed dictum leo dignissim vitae. Nulla
+              mollis urna sit amet quam ultricies, sed ornare orci consequat.
+              Vestibulum scelerisque augue non laoreet feugiat. Duis quis mi
+              commodo, ultrices tellus sit amet, euismod mauris.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
