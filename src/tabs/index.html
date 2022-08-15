@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabs</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm",
+          "@thoughtbot/tailwindcss-aria-attributes": "https://cdn.jsdelivr.net/npm/@thoughtbot/tailwindcss-aria-attributes@0/+esm"
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import ariaPlugin from "@thoughtbot/tailwindcss-aria-attributes";
+      tailwind.config = {
+        plugins: [ariaPlugin],
+      };
+    </script>
+    <script type="module">
+      import { Application } from "@hotwired/stimulus";
+      import { TabsController } from "/tabs/tabs.js";
+      const app = Application.start();
+      app.register("tabs", TabsController);
+    </script>
+  </head>
+  <body class="p-8">
+    <header class="mb-16 border-b border-black">
+      <p><a href="/" class="underline">← Back</a></p>
+      <div class="my-16">
+        <h1 class="text-3xl font-bold">Tabs</h1>
+        <div class="mt-3 max-w-xl">
+          <p>Standard tabbed interface.</p>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div data-controller="tabs">
+        <h2 id="tablist-1" class="mb-4 text-xl font-bold">Tab List 1</h2>
+        <p
+          class="flex items-end gap-x-2"
+          role="tablist"
+          aria-labelledby="tablist-1"
+        >
+          <button
+            type="button"
+            class="aria-selected:bg-white aria-selected:border aria-selected:border-black aria-selected:border-b-0 aria-selected:-mb-px rounded-lg rounded-b-none bg-gray-300 px-4 py-2 font-bold"
+            role="tab"
+          >
+            Tab 1
+          </button>
+          <button
+            type="button"
+            class="aria-selected:bg-white aria-selected:border aria-selected:border-black aria-selected:border-b-0 aria-selected:-mb-px rounded-lg rounded-b-none bg-gray-300 px-4 py-2 font-bold"
+            role="tab"
+          >
+            Tab 2
+          </button>
+          <button
+            type="button"
+            class="aria-selected:bg-white aria-selected:border aria-selected:border-black aria-selected:border-b-0 aria-selected:-mb-px rounded-lg rounded-b-none bg-gray-300 px-4 py-2 font-bold"
+            role="tab"
+          >
+            Tab 3
+          </button>
+          <button
+            type="button"
+            class="aria-selected:bg-white aria-selected:border aria-selected:border-black aria-selected:border-b-0 aria-selected:-mb-px rounded-lg rounded-b-none bg-gray-300 px-4 py-2 font-bold"
+            role="tab"
+          >
+            Tab 4
+          </button>
+        </p>
+        <div class="border-t border-black">
+          <div class="p-4" role="tabpanel">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+              cursus nunc ac imperdiet volutpat. Nunc consequat nunc quis elit
+              malesuada consequat. Curabitur id justo tellus. Pellentesque in ex
+              mollis, ultricies ipsum nec, sollicitudin ex. Praesent sed
+              facilisis erat. Nulla eu efficitur leo. Nunc sagittis augue eu
+              massa dapibus, eu eleifend justo vehicula. Morbi laoreet elit a
+              orci tempor, eu feugiat justo condimentum. Duis quis fringilla
+              urna. Nam vestibulum, nulla ac varius tristique, arcu enim mollis
+              libero, ut tempus neque arcu in leo. Vestibulum rhoncus sit amet
+              nisl sagittis pharetra. Proin malesuada odio molestie feugiat
+              semper. Praesent non velit nisi. Nunc consectetur consectetur
+              aliquam.
+            </p>
+          </div>
+          <div class="p-4" role="tabpanel">
+            <p>
+              Etiam sodales, purus quis sollicitudin bibendum, lectus libero
+              imperdiet metus, id tristique ipsum magna sit amet risus.
+              Curabitur nunc mi, vehicula eu dui a, scelerisque convallis odio.
+              Nulla a luctus ipsum, vitae fermentum felis. Pellentesque in
+              lectus pharetra, tempus magna ac, efficitur mi. Donec dapibus
+              velit vestibulum, interdum libero commodo, porta libero. Aenean
+              ultrices nibh nec mi blandit, luctus ultrices libero efficitur.
+              Aenean et augue dictum, viverra urna vel, maximus orci. Etiam
+              massa mi, dapibus id lacus ac, placerat varius dolor. Aliquam
+              dictum justo vitae vulputate maximus. Donec mattis arcu nulla, ac
+              vulputate metus ullamcorper suscipit. Pellentesque bibendum sit
+              amet libero facilisis accumsan. Donec ac placerat enim, ac
+              ultricies velit. Donec id sollicitudin nisi. Nullam at justo
+              tempus, cursus est in, rutrum ligula.
+            </p>
+          </div>
+          <div class="p-4" role="tabpanel">
+            <p>
+              Nam vel nibh nec augue interdum euismod. Donec magna massa,
+              sollicitudin et est in, vestibulum lobortis lectus. Donec
+              porttitor ullamcorper diam accumsan ultrices. Nam venenatis at
+              purus et egestas. Nulla pellentesque vestibulum nibh, non
+              tincidunt enim dignissim eget. Donec viverra convallis ipsum ac
+              accumsan. Nullam vehicula luctus auctor. Cras imperdiet, neque in
+              convallis bibendum, lorem diam ornare elit, et euismod erat purus
+              sed turpis. Vivamus eget blandit quam, vel rhoncus elit.
+            </p>
+
+            <div class="mt-8" data-controller="tabs">
+              <h3 id="tablist-2" class="mb-4 text-xl font-bold">Nested Tabs</h3>
+              <p
+                class="flex items-end gap-x-2"
+                role="tablist"
+                aria-labelledby="tablist-2"
+              >
+                <button
+                  type="button"
+                  class="aria-selected:bg-white aria-selected:border aria-selected:border-black aria-selected:border-b-0 aria-selected:-mb-px rounded-lg rounded-b-none bg-gray-300 px-4 py-2 font-bold"
+                  role="tab"
+                >
+                  Tab 1
+                </button>
+                <button
+                  type="button"
+                  class="aria-selected:bg-white aria-selected:border aria-selected:border-black aria-selected:border-b-0 aria-selected:-mb-px rounded-lg rounded-b-none bg-gray-300 px-4 py-2 font-bold"
+                  role="tab"
+                >
+                  Tab 2
+                </button>
+              </p>
+              <div class="border-t border-black">
+                <div class="p-4" role="tabpanel">
+                  <p>
+                    Maecenas est libero, efficitur ut scelerisque vitae,
+                    scelerisque ac est. Fusce ut ligula a purus malesuada semper
+                    in in nibh. Sed quis consectetur erat. Ut feugiat tempus
+                    consequat. In at turpis eu odio viverra dictum vel blandit
+                    magna. Vivamus nulla risus, mattis pellentesque venenatis
+                    sit amet, feugiat consequat erat. Sed sodales dolor mauris,
+                    sed aliquam quam tempus eu. Sed eget placerat nisl. Ut
+                    elementum sed eros ac efficitur.
+                  </p>
+                </div>
+                <div class="p-4" role="tabpanel">
+                  <p>
+                    Nulla faucibus ornare nulla, at euismod tellus mollis non.
+                    Curabitur sed tellus eleifend, ornare metus id, consequat
+                    mi. Duis quis pellentesque risus. Cras blandit enim ac ex
+                    volutpat, sed vulputate velit sagittis. Vestibulum consequat
+                    augue non ante lobortis volutpat. Donec rutrum aliquet eros
+                    ut elementum. Sed vitae risus ut elit venenatis varius.
+                    Donec non nibh feugiat, iaculis nisi in, commodo neque.
+                    Integer quis justo diam. Donec iaculis nunc tortor.
+                    Vestibulum feugiat ac odio ac pretium. Curabitur sed nisl
+                    nisl. Maecenas laoreet tincidunt lectus, non condimentum
+                    sapien iaculis ut. Sed porta, urna at consectetur rhoncus,
+                    dui neque euismod neque, a pulvinar velit massa quis metus.
+                    Nam pretium risus quis velit cursus tempus.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-4" role="tabpanel">
+            <p>
+              Nunc porta ullamcorper sem condimentum congue. In porttitor
+              pharetra est sit amet vestibulum. Mauris ullamcorper convallis
+              nunc, id cursus odio luctus in. Sed dignissim nisi iaculis,
+              gravida augue ut, euismod odio. Curabitur consequat at ligula sed
+              rhoncus. Aenean eget faucibus augue. Cras quis tellus dui. Aenean
+              ultrices orci non mollis pulvinar. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. Etiam justo mi, eleifend ac nisl in,
+              volutpat iaculis nunc. Cras eu augue blandit, accumsan magna vel,
+              sodales nisi. Sed cursus libero ut consectetur tempor. Nunc
+              bibendum ornare facilisis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

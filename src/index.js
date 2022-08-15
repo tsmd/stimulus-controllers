@@ -1,3 +1,4 @@
+export * from "./button/button.js";
 export * from "./character-counter/character-counter.js";
 export * from "./check-all/check-all.js";
 export * from "./clear-input/clear-input.js";
@@ -7,3 +8,4 @@ export * from "./dialog/dialog.js";
 export * from "./flex-textarea/flex-textarea.js";
 export * from "./popup-menu/popup-menu.js";
 export * from "./reveal-password/reveal-password.js";
+export * from "./tabs/tabs.js";
