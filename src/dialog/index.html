@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dialog</title>
-    <script type="importmap">
+    <script
+      src="https://cdn.jsdelivr.net/npm/es-module-shims@1.5.16/dist/es-module-shims.min.js"
+      async
+    ></script>
+    <script type="esms-options">
+      { "shimMode": true }
+    </script>
+    <script type="importmap-shim">
       {
         "imports": {
           "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm",
@@ -13,7 +20,7 @@
       }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module">
+    <script type="module-shim">
       import { Application, Controller } from "@hotwired/stimulus";
       import { DialogController } from "/dialog/dialog.js";
       const app = Application.start();
@@ -58,7 +65,7 @@
       </button>
       <div
         id="dialog-1"
-        class="fixed inset-0 z-10 grid"
+        class="fixed inset-0 z-10 p-8"
         aria-labelledby="dialog-1-label"
         aria-describedby="dialog-1-description"
         style="display: none"
@@ -76,7 +83,7 @@
           data-leave-to="opacity-0"
         ></div>
         <div
-          class="relative z-10 m-auto w-96 rounded-lg bg-white p-6"
+          class="relative z-10 mx-auto w-96 max-w-full rounded-lg bg-white p-6"
           role="document"
           data-dialog-target="transition"
           data-enter="transition motion-reduce:transition-none ease-[cubic-bezier(0.25,1.27,0.84,1.09)] duration-300"
