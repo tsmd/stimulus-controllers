@@ -8,10 +8,7 @@
       src="https://cdn.jsdelivr.net/npm/es-module-shims@1.5.16/dist/es-module-shims.min.js"
       async
     ></script>
-    <script type="esms-options">
-      { "shimMode": true }
-    </script>
-    <script type="importmap-shim">
+    <script type="importmap">
       {
         "imports": {
           "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
@@ -19,7 +16,7 @@
       }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module-shim">
+    <script type="module">
       import { Application } from "@hotwired/stimulus";
       import { FlexTextareaController } from "/flex-textarea/flex-textarea.js";
       const app = Application.start();
