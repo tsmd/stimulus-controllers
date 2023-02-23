@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inlay</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/es-module-shims@1.5.16/dist/es-module-shims.min.js"
+      async
+    ></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import { Application } from "@hotwired/stimulus";
+      import { InlayController } from "/inlay/inlay.js";
+      const app = Application.start();
+      app.register("inlay", InlayController);
+    </script>
+  </head>
+  <body class="p-8">
+    <header class="mb-16 border-b border-black">
+      <p><a href="/" class="underline">← Back</a></p>
+      <div class="my-16">
+        <h1 class="text-3xl font-bold">Inlay</h1>
+        <div class="mt-3 max-w-xl">
+          <p>Insert additional content</p>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div data-controller="inlay">
+        <div class="divide-y rounded border" data-inlay-target="container">
+          <article class="p-4">
+            <h2>
+              <a href="#" class="font-bold text-blue-700 underline">Link 1</a>
+            </h2>
+            <p class="mt-2">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </article>
+          <article class="p-4">
+            <h2>
+              <a href="#" class="font-bold text-blue-700 underline">Link 2</a>
+            </h2>
+            <p class="mt-2">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </article>
+
+          <template data-inlay-target="content">
+            <article class="p-4">
+              <h2>
+                <a href="#" class="font-bold text-blue-700 underline">Link 3</a>
+              </h2>
+              <p class="mt-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </article>
+            <article class="p-4">
+              <h2>
+                <a href="#" class="font-bold text-blue-700 underline">Link 4</a>
+              </h2>
+              <p class="mt-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </article>
+          </template>
+
+          <template data-inlay-target="content">
+            <article class="p-4">
+              <h2>
+                <a href="#" class="font-bold text-blue-700 underline">Link 5</a>
+              </h2>
+              <p class="mt-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </article>
+            <article class="p-4">
+              <h2>
+                <a href="#" class="font-bold text-blue-700 underline">Link 6</a>
+              </h2>
+              <p class="mt-2">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+            </article>
+          </template>
+        </div>
+        <p class="mt-2" data-inlay-target="buttonContainer">
+          <button
+            type="button"
+            class="inline-block rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+            data-action="inlay#show"
+          >
+            Show content
+          </button>
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
