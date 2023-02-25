@@ -16,18 +16,11 @@
     <script type="importmap">
       {
         "imports": {
-          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm",
-          "@thoughtbot/tailwindcss-aria-attributes": "https://cdn.jsdelivr.net/npm/@thoughtbot/tailwindcss-aria-attributes@0/+esm"
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm"
         }
       }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script type="module">
-      import ariaPlugin from "@thoughtbot/tailwindcss-aria-attributes";
-      tailwind.config = {
-        plugins: [ariaPlugin],
-      };
-    </script>
     <script type="module">
       import { Application } from "@hotwired/stimulus";
       import { RevealPasswordController } from "/reveal-password/reveal-password.js";
