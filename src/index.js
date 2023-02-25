@@ -8,6 +8,6 @@ export * from "./dialog/dialog.js";
 export * from "./disclosure/disclosure.js";
 export * from "./eripusisu/eripusisu.js";
 export * from "./flex-textarea/flex-textarea.js";
-export * from "./popup-menu/popup-menu.js";
+export * from "./menu/menu.js";
 export * from "./reveal-password/reveal-password.js";
 export * from "./tabs/tabs.js";
