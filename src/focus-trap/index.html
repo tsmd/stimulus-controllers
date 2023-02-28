@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus Trap</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/es-module-shims@1.5.16/dist/es-module-shims.min.js"
+      async
+    ></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@hotwired/stimulus": "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3/+esm",
+          "tabbable": "https://cdn.jsdelivr.net/npm/tabbable@6/+esm"
+        }
+      }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+      import { Application } from "@hotwired/stimulus";
+      import { FocusTrapController } from "/focus-trap/focus-trap.js";
+      const app = Application.start();
+      app.register("focus-trap", FocusTrapController);
+    </script>
+  </head>
+  <body class="p-8">
+    <header class="mb-16 border-b border-black">
+      <p><a href="/" class="underline">← Back</a></p>
+      <div class="my-16">
+        <h1 class="text-3xl font-bold">Focus Trap</h1>
+        <div class="mt-3 max-w-xl">
+          <p>Trap focus into specific element.</p>
+        </div>
+      </div>
+    </header>
+    <main class="space-y-6" data-controller="focus-trap">
+      <p class="flex flex-wrap gap-4">
+        <a href="#" class="underline">Link 1</a>
+        <a href="#" class="underline">Link 2</a>
+        <a href="#" class="underline">Link 3</a>
+      </p>
+
+      <div
+        class="space-y-4 rounded border border-gray-300 p-6"
+        data-focus-trap-target="trapInto"
+      >
+        <p class="flex flex-wrap gap-4">
+          <button
+            type="button"
+            class="rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+            data-action="focus-trap#enable"
+          >
+            Enable
+          </button>
+          <button
+            type="button"
+            class="rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+            data-action="focus-trap#disable"
+          >
+            Disable
+          </button>
+        </p>
+        <p>
+          <a href="#" class="underline"
+            ><code>a</code> element w/ <code>href</code></a
+          >
+        </p>
+        <p>
+          <a><code>a</code> element wo/ <code>href</code></a>
+        </p>
+        <p>
+          <label>
+            Disabled
+            <input
+              type="text"
+              disabled
+              class="mt-1 block w-64 max-w-full rounded border border-gray-300 p-2 disabled:bg-gray-100"
+            />
+          </label>
+        </p>
+        <p>
+          <label>
+            Readonly
+            <input
+              type="text"
+              readonly
+              class="mt-1 block w-64 max-w-full rounded border border-gray-300 p-2 disabled:bg-gray-100"
+            />
+          </label>
+        </p>
+        <p>
+          <label>
+            Username
+            <input
+              type="text"
+              class="mt-1 block w-64 max-w-full rounded border border-gray-300 p-2 disabled:bg-gray-100"
+            />
+          </label>
+        </p>
+        <p>
+          <label>
+            Password
+            <input
+              type="password"
+              class="mt-1 block w-64 max-w-full rounded border border-gray-300 p-2 disabled:bg-gray-100"
+            />
+          </label>
+        </p>
+        <p>
+          <label><input type="checkbox" /> Checkbox</label>
+        </p>
+        <p>
+          <label><input type="radio" name="radio" /> Radio 1</label>
+          <label><input type="radio" name="radio" checked /> Radio 2</label>
+        </p>
+        <p>
+          <span tabindex="0" class="inline-block border border-gray-300 p-1">
+            <code>span[tabindex="0"]</code>
+          </span>
+        </p>
+        <p>
+          <span tabindex="-1" class="inline-block border border-gray-300 p-1">
+            <code>span[tabindex="-1"]</code>
+          </span>
+        </p>
+        <details>
+          <summary>Summary</summary>
+          Details <a href="#" class="underline">Link</a>
+        </details>
+        <p inert class="flex flex-wrap items-baseline gap-4 bg-gray-100 p-2">
+          Inert controls: <a href="#" class="underline">Link</a>
+          <button
+            type="button"
+            class="rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+          >
+            Button
+          </button>
+          <label>
+            <input type="Checkbox" />
+            Checkbox
+          </label>
+        </p>
+      </div>
+
+      <p class="flex flex-wrap gap-4">
+        <a href="#" class="underline">Link 4</a>
+        <a href="#" class="underline">Link 5</a>
+        <a href="#" class="underline">Link 6</a>
+      </p>
+
+      <p class="flex flex-wrap gap-4">
+        <button
+          type="button"
+          class="rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+          data-action="focus-trap#enable"
+        >
+          Enable
+        </button>
+        <button
+          type="button"
+          class="rounded border border-transparent bg-gray-300 px-4 py-2 font-bold"
+          data-action="focus-trap#disable"
+        >
+          Disable
+        </button>
+      </p>
+    </main>
+  </body>
+</html>
