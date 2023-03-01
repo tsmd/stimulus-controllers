@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus";
-import { tabbable } from "../helpers.js";
+import { tabbable } from "tabbable";
 
 /**
  * @property {HTMLElement} containerTarget
