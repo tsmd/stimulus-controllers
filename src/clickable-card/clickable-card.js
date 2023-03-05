@@ -5,7 +5,7 @@ import { listen } from "../helpers.js";
  * @property {HTMLAnchorElement} linkTarget
  */
 export class ClickableCardController extends Controller {
-  static targets = ["link"];
+  static targets = ["link", "exclude"];
 
   initialize() {
     /** @private */
@@ -38,6 +38,10 @@ export class ClickableCardController extends Controller {
       return;
     }
 
+    if (this.isElementInteractive_(e.target)) {
+      return;
+    }
+
     if (
       Math.abs(e.screenX - this.screenX_) < 5 &&
       Math.abs(e.screenY - this.screenY_) < 5
@@ -56,5 +60,14 @@ export class ClickableCardController extends Controller {
 
     this.screenX_ = -1;
     this.screenY_ = -1;
+  }
+
+  /** @private */
+  isElementInteractive_(element) {
+    return Boolean(
+      element.closest(
+        `a[href],button,input,[data-${this.identifier}-target="exclude"]`
+      )
+    );
   }
 }
