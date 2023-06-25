@@ -4,11 +4,10 @@
   "description": "Personal collection of accessible and robust Stimulus controllers",
   "main": "src/index.js",
   "scripts": {
-    "cypress": "cypress open",
-    "cypress:run": "cypress run",
+    "playwright": "playwright test",
     "serve": "serve src",
     "test": "npm run test:ci",
-    "test:ci": "start-server-and-test serve http://localhost:3000/ cypress:run"
+    "test:ci": "start-server-and-test serve http://localhost:3000/ playwright"
   },
   "repository": {
     "type": "git",
